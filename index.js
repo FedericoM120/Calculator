@@ -13,31 +13,37 @@ function divide(a, b) {
     return a / b;
 }
 
-let operand1 = 0;
+let operand1;
+let operand2;
 let operator = null;
 
-function operate(operand1, operand2, operator){
+function operate(){
     let result = 0;
-    switch (operator){
-        case "+":
-            result = add(operand1, operand1);
+    if (operator === "+") {
+        result = add(operand1, operand2);
     }
     document.getElementsByClassName("displayed")[0].innerHTML = result.toString();
 }
 
-const displayScreen = document.querySelector("displayed")[0];
+//const displayScreen = document.querySelector("displayed")[0];
 
-
-//if button7 is clicked, append strin 7 to display node
 function display7() {
     let display = document.getElementsByClassName("displayed")[0];
     display.innerHTML += "7";
-    operand1 = parseInt(display.innerHTML);
+    if (operator == null) {
+        operand1 = parseInt(display.innerHTML);
+    } else {
+        operand2 = parseInt(display.innerHTML);
+    }
 }
 function display8() {
     let display = document.getElementsByClassName("displayed")[0];
     display.innerHTML += "8";
-    operand1 = parseInt(display.innerHTML);
+    if (operator == null) {
+        operand1 = parseInt(display.innerHTML);
+    } else {
+        operand2 = parseInt(display.innerHTML);
+    }
 }
 function display9() {
     let display = document.getElementsByClassName("displayed")[0];
@@ -48,10 +54,17 @@ function display9() {
 function cleared() {
     document.getElementsByClassName("displayed")[0].innerHTML = "";
     operand1 = null;
+    operand2 = null;
+    operator = null;
 }
 
 function addSign(){
     operator = "+";
+    document.getElementsByClassName("displayed")[0].innerHTML = "";
+}
+
+function minusSign(){
+    operator = "-";
     document.getElementsByClassName("displayed")[0].innerHTML = "";
 }
 

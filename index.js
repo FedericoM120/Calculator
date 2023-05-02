@@ -13,31 +13,46 @@ function divide(a, b) {
     return a / b;
 }
 
-let operand1;
-let operand2;
-let operator;
+let operand1 = 0;
+let operator = null;
 
 function operate(operand1, operand2, operator){
-    return add;
+    let result = 0;
+    switch (operator){
+        case "+":
+            result = add(operand1, operand1);
+    }
+    document.getElementsByClassName("displayed")[0].innerHTML = result.toString();
 }
 
-const button7 = document.getElementById("7");
-const button8 = document.getElementById("8");
-const button9 = document.getElementById("9");
-
-
 const displayScreen = document.querySelector("displayed")[0];
-console.log(displayScreen);
+
 
 //if button7 is clicked, append strin 7 to display node
 function display7() {
-    document.getElementsByClassName("displayed")[0].innerHTML = "7";
+    let display = document.getElementsByClassName("displayed")[0];
+    display.innerHTML += "7";
+    operand1 = parseInt(display.innerHTML);
 }
 function display8() {
-    document.getElementsByClassName("displayed")[0].innerHTML = "8";
+    let display = document.getElementsByClassName("displayed")[0];
+    display.innerHTML += "8";
+    operand1 = parseInt(display.innerHTML);
 }
 function display9() {
-    document.getElementsByClassName("displayed")[0].innerHTML = "9";
+    let display = document.getElementsByClassName("displayed")[0];
+    display.innerHTML += "9";
+    operand1 = parseInt(display.innerHTML);
+}
+
+function cleared() {
+    document.getElementsByClassName("displayed")[0].innerHTML = "";
+    operand1 = null;
+}
+
+function addSign(){
+    operator = "+";
+    document.getElementsByClassName("displayed")[0].innerHTML = "";
 }
 
 

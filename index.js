@@ -48,7 +48,11 @@ function display8() {
 function display9() {
     let display = document.getElementsByClassName("displayed")[0];
     display.innerHTML += "9";
-    operand1 = parseInt(display.innerHTML);
+    if (operator == null) {
+        operand1 = parseInt(display.innerHTML);
+    } else {
+        operand2 = parseInt(display.innerHTML);
+    }
 }
 
 function cleared() {

@@ -59,7 +59,7 @@ function display2() {
         display.innerHTML += "2";
         operand2 = parseInt(display.innerHTML);
     } else {
-        display.innerHTML = "2";
+        display.innerHTML += "2";
         operand2 = parseInt(display.innerHTML);
     }
 }
@@ -176,13 +176,27 @@ function addSign(){
             operatorCount++;
             result = multiply(operand1, operand2);
             operand1 = result;
-            result = add(operand1, operand2);
+            operator = "+";
+            //result = subtract(operand1, operand2);
+            document.getElementsByClassName("displayed")[0].innerHTML = result.toString();
+        } else if (operator == "-") {
+            operatorCount++;
+            result = subtract(operand1, operand2);
+            operand1 = result;
+            operator = "+";
+            document.getElementsByClassName("displayed")[0].innerHTML = result.toString();
+        } else if (operator == "%"){
+            operatorCount++;
+            result = divide(operand1, operand2);
+            operand1 = result;
+            operator = "+";
             document.getElementsByClassName("displayed")[0].innerHTML = result.toString();
         } else {
+            document.getElementsByClassName("displayed")[0].innerHTML = "";
             operatorCount++;
             result = add(operand1, operand2);
             operand1 = result;
-            operand2 = 0;
+            //operand2 = 0;
             document.getElementsByClassName("displayed")[0].innerHTML = result.toString();
         }
     }
@@ -198,7 +212,8 @@ function minusSign(){
             operatorCount++;
             result = multiply(operand1, operand2);
             operand1 = result;
-            result = add(operand1, operand2);
+            operator = "-";
+            //result = subtract(operand1, operand2);
             document.getElementsByClassName("displayed")[0].innerHTML = result.toString();
         } else if (operator == "+") {
             operatorCount++;
@@ -206,19 +221,54 @@ function minusSign(){
             operand1 = result;
             operator = "-";
             document.getElementsByClassName("displayed")[0].innerHTML = result.toString();
+        } else if (operator == "%"){
+            operatorCount++;
+            result = divide(operand1, operand2);
+            operand1 = result;
+            operator = "-";
+            document.getElementsByClassName("displayed")[0].innerHTML = result.toString();
         } else {
             operatorCount++;
             result = subtract(operand1, operand2);
             operand1 = result;
-            operand2 = 0;
+            //operand2 = 0;
             document.getElementsByClassName("displayed")[0].innerHTML = result.toString();
         }
     }
 }
 
 function divideSign(){
-    operator = "%";
-    document.getElementsByClassName("displayed")[0].innerHTML = "";
+    if (operator == null) {
+        operator = "%";
+        document.getElementsByClassName("displayed")[0].innerHTML = "";
+        operatorCount++;
+    } else if (operator != null){
+        if (operator == "*"){
+            operatorCount++;
+            result = multiply(operand1, operand2);
+            operand1 = result;
+            operator = "%";
+            document.getElementsByClassName("displayed")[0].innerHTML = result.toString();
+        } else if (operator == "+") {
+            operatorCount++;
+            result = add(operand1, operand2);
+            operand1 = result;
+            operator = "%";
+            document.getElementsByClassName("displayed")[0].innerHTML = result.toString();
+        } else if (operator == "-"){
+            operatorCount++;
+            result = subtract(operand1, operand2);
+            operand1 = result;
+            operator = "%";
+            document.getElementsByClassName("displayed")[0].innerHTML = result.toString();
+        } else {
+            operatorCount++;
+            result = divide(operand1, operand2);
+            operand1 = result;
+            //operand2 = 0;
+            document.getElementsByClassName("displayed")[0].innerHTML = result.toString();
+        }
+    }
 }
 
 function multiplySign(){
@@ -227,11 +277,31 @@ function multiplySign(){
         document.getElementsByClassName("displayed")[0].innerHTML = "";
         operatorCount++;
     }else if (operator != null){
-        operatorCount++;
-        result = multiply(operand1, operand2);
-        operand1 = result;
-        operand2 = 0;
-        document.getElementsByClassName("displayed")[0].innerHTML = result.toString();
+        if (operator == "-"){
+            operatorCount++;
+            result = subtract(operand1, operand2);
+            operand1 = result;
+            operator = "*";
+            document.getElementsByClassName("displayed")[0].innerHTML = result.toString();
+        } else if (operator == "+") {
+            operatorCount++;
+            result = add(operand1, operand2);
+            operand1 = result;
+            operator = "*";
+            document.getElementsByClassName("displayed")[0].innerHTML = result.toString();
+        } else if (operator == "%"){
+            operatorCount++;
+            result = divide(operand1, operand2);
+            operand1 = result;
+            operator = "*";
+            document.getElementsByClassName("displayed")[0].innerHTML = result.toString();
+        } else {
+            operatorCount++;
+            result = multiply(operand1, operand2);
+            operand1 = result;
+            //operand2 = 0;
+            document.getElementsByClassName("displayed")[0].innerHTML = result.toString();
+        }
     }
 }
 

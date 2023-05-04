@@ -45,8 +45,10 @@ function display1() {
         display.innerHTML += "1";
         operand2 = parseInt(display.innerHTML);
     } else {
-        display.innerHTML = "1";
+        display.innerHTML = "";
+        display.innerHTML += "1";
         operand2 = parseInt(display.innerHTML);
+        operatorCount = 1;
     }
 }
 
@@ -59,8 +61,10 @@ function display2() {
         display.innerHTML += "2";
         operand2 = parseInt(display.innerHTML);
     } else {
+        display.innerHTML = "";
         display.innerHTML += "2";
         operand2 = parseInt(display.innerHTML);
+        operatorCount = 1;
     }
 }
 
@@ -73,8 +77,10 @@ function display3() {
         display.innerHTML += "3";
         operand2 = parseInt(display.innerHTML);
     } else {
-        display.innerHTML = "3";
+        display.innerHTML = "";
+        display.innerHTML += "3";
         operand2 = parseInt(display.innerHTML);
+        operatorCount = 1;
     }
 }
 
@@ -87,8 +93,10 @@ function display4() {
         display.innerHTML += "4";
         operand2 = parseInt(display.innerHTML);
     } else {
-        display.innerHTML = "4";
+        display.innerHTML = "";
+        display.innerHTML += "4";
         operand2 = parseInt(display.innerHTML);
+        operatorCount = 1;
     }
 }
 
@@ -101,8 +109,10 @@ function display5() {
         display.innerHTML += "5";
         operand2 = parseInt(display.innerHTML);
     } else {
-        display.innerHTML = "5";
+        display.innerHTML = "";
+        display.innerHTML += "5";
         operand2 = parseInt(display.innerHTML);
+        operatorCount = 1;
     }
 }
 
@@ -115,8 +125,10 @@ function display6() {
         display.innerHTML += "6";
         operand2 = parseInt(display.innerHTML);
     } else {
-        display.innerHTML = "6";
+        display.innerHTML = "";
+        display.innerHTML += "6";
         operand2 = parseInt(display.innerHTML);
+        operatorCount = 1;
     }
 }
 
@@ -129,8 +141,10 @@ function display7() {
         display.innerHTML += "7";
         operand2 = parseInt(display.innerHTML);
     } else {
-        display.innerHTML = "7";
+        display.innerHTML = "";
+        display.innerHTML += "7";
         operand2 = parseInt(display.innerHTML);
+        operatorCount = 1;
     }
 }
 
@@ -143,18 +157,42 @@ function display8() {
         display.innerHTML += "8";
         operand2 = parseInt(display.innerHTML);
     } else {
-        display.innerHTML = "8";
+        display.innerHTML = "";
+        display.innerHTML += "8";
         operand2 = parseInt(display.innerHTML);
+        operatorCount = 1;
     }
 }
 
 function display9() {
     let display = document.getElementsByClassName("displayed")[0];
-    display.innerHTML += "9";
     if (operator == null) {
+        display.innerHTML += "9";
         operand1 = parseInt(display.innerHTML);
-    } else {
+    } else if (operatorCount < 2){
+        display.innerHTML += "9";
         operand2 = parseInt(display.innerHTML);
+    } else {
+        display.innerHTML = "";
+        display.innerHTML += "9";
+        operand2 = parseInt(display.innerHTML);
+        operatorCount = 1;
+    }
+}
+
+function display0() {
+    let display = document.getElementsByClassName("displayed")[0];
+    if (operator == null) {
+        display.innerHTML += "0";
+        operand1 = parseInt(display.innerHTML);
+    } else if (operatorCount < 2){
+        display.innerHTML += "0";
+        operand2 = parseInt(display.innerHTML);
+    } else {
+        display.innerHTML = "";
+        display.innerHTML += "0";
+        operand2 = parseInt(display.innerHTML);
+        operatorCount = 1;
     }
 }
 
@@ -262,11 +300,11 @@ function divideSign(){
             operator = "%";
             document.getElementsByClassName("displayed")[0].innerHTML = result.toString();
         } else {
-            operatorCount++;
             result = divide(operand1, operand2);
-            operand1 = result;
-            //operand2 = 0;
             document.getElementsByClassName("displayed")[0].innerHTML = result.toString();
+            operatorCount++;
+            operator = "%";
+            operand1 = result;
         }
     }
 }
